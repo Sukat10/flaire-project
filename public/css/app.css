@@ -1013,6 +1013,9 @@ video {
 .pb-8 {
   padding-bottom: 2rem;
 }
+.pb-15 {
+  padding-bottom: 3.75rem;
+}
 .text-center {
   text-align: center;
 }
@@ -1420,6 +1423,10 @@ video {
 
   .md\:pt-5 {
     padding-top: 1.25rem;
+  }
+
+  .md\:pb-10 {
+    padding-bottom: 2.5rem;
   }
 
   .md\:text-left {

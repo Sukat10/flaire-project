@@ -2,8 +2,8 @@
 
 @section('content')
 <section class="container py-6 sm:mt-10">
-    <div class="pb-10 ">
-        <div class="text-center md:text-left sm:pb-10">
+    <div class="pb-15 md:pb-10">
+        <div class="text-center md:text-left">
             <h1 class="text-app-blue font-bold text-3xl">Welcome Back!! </h1>
             <p class="py-3 capitalize ">sign in to continue</p>
         </div>
