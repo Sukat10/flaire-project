@@ -1,0 +1,89 @@
+@extends('layouts.app')
+
+@section('content')
+<main class="sm:container sm:mx-auto sm:mt-10">
+    <div class="w-full sm:px-6">
+
+        @if (session('status'))
+        <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4"
+            role="alert">
+            {{ session('status') }}
+        </div>
+        @endif
+
+
+        @isset($templates)
+        <section>
+            <h2>Daily Prompt post</h2>
+            <div class="flex md:flex-wrap">
+                @foreach ($templates as $template)
+                @if ($template->category->name === "daily prompt post")
+                <div class="w-[100px] h-[100px]">
+                    <a href="" class="h-full w-full">
+                        <img src="{{ route('template.show') }}" alt="" class="h-full w-full">
+                    </a>
+                </div>
+                @endif
+                @endforeach
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Sales post</h2>
+            <div class="flex md:flex-wrap">
+                @foreach ($templates as $template)
+                @if ($template->category->name === "daily prompt post")
+                <div class="w-[100px] h-[100px]">
+                    <a href="#" class="h-full w-full">
+                        <img src="{{ route('logout') }}" alt="" class="h-full w-full">
+                    </a>
+                </div>
+                @endif
+                @endforeach
+            </div>
+        </section>
+
+        <section>
+            <h2>Holiday post</h2>
+            <div class="flex md:flex-wrap">
+                @foreach ($templates as $template)
+                @if ($template->category->name === "daily prompt post")
+                <div class="w-[100px] h-[100px]">
+                    <a href="#" class="h-full w-full">
+                        <img src="{{ route('logout') }}" alt="" class="h-full w-full">
+                    </a>
+                </div>
+                @endif
+                @endforeach
+            </div>
+        </section>
+
+        <section>
+            <h2>Sales video</h2>
+            <div class="flex md:flex-wrap">
+                @foreach ($templates as $template)
+                @if ($template->category->name === "daily prompt post")
+                <div class="w-[100px] h-[100px]">
+                    <a href="#" class="h-full w-full">
+                        <img src="{{ route('logout') }}" alt="" class="h-full w-full">
+                    </a>
+                </div>
+                @endif
+                @endforeach
+            </div>
+        </section>
+        @endisset
+    </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+@endsection

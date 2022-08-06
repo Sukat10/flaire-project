@@ -1,0 +1,18 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+    .bg-app-red {
+        background-color: #a3002e;
+    }
+    .bg-app-blue {
+        background-color: #3a0062;
+    }
+    .scroll-nav::-webkit-scrollbar {
+        @apply h-1;
+    }
+    .btn {
+        @apply py-3 px-2 text-center;
+    }
+}
