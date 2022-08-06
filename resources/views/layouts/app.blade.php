@@ -32,14 +32,14 @@
 
                 <form action="{{ route('search') }}" method="get" class="flex-auto text-dark">
                     {{ csrf_field() }}
-                    <div class="flex items-center rounded-md self-center bg-white p-2 px-3 block">
+                    <div class="flex items-center rounded-md self-center bg-white p-2 px-3">
                         <i class="fa fa-search"></i>
-                        <input class="px-4 outline-none border-none flex-grow" type="text" name="" id=""
+                        <input class="px-4 h-12 outline-none border-none flex-grow" type="text" name="" id=""
                             placeholder="search flaire" style="padding: .3rem; border-radius:10px" />
                     </div>
                 </form>
                 <nav
-                    class="space-x-2 text-gray-300 text-sm sm:text-base hidden md:block w-3/12 text-right capitalize text-xs">
+                    class="space-x-2 text-gray-300 text-sm sm:text-base hidden md:block w-3/12 text-right capitalize">
                     @guest
                     <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @if (Route::has('register'))
