@@ -15,4 +15,8 @@
     .btn {
         @apply py-3 px-2 text-center;
     }
+
+    .search-form{
+        max-width: calc(100vw - 150px) !important;
+    }
 }

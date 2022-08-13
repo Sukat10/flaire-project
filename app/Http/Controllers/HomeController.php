@@ -26,4 +26,9 @@ class HomeController extends Controller
     {
         return view('home', ['templates' => Template::all()]);
     }
+
+    public function show()
+    {
+        return view('home', ['template' => Template::show()]);
+    }
 }

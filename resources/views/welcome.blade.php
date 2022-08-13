@@ -6,7 +6,7 @@
     <div class="flex flex-col justify-around text-center md:text-left">
         <div class="flex flex-col justify-around md:justify-start mb-3">
             <h1 class="text-3xl font-bold uppercase w-full block  mb-4">Welcome To flaire</h1>
-            <h2 class="text-3xl font-bold uppercase block w-[300px] md:w-full mx-auto">social media content done for you</h2>
+            <h2 class="text-3xl font-bold uppercase block max-w-md md:w-full mx-auto md:mx-0">social media content done for you</h2>
         </div>
         <p class="text-2xl my-6 md:my-3">
             All in one social media marketing tool.

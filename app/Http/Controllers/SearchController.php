@@ -13,7 +13,9 @@ class SearchController extends Controller
     {
         $search = $request->input('search');
         //
-        $data['template'] =  Template::search($search, ['title' => 20, 'content' => 10,]);
-        return view('search', $data);
+        // $data['template'] =  Template::search($search, ['title' => 20, 'content' => 10,]);
+        $data['template'] =  Template::all();
+        // return view('search', $data);
+        return view('home', ['templates' => Template::all()]);
     }
 }

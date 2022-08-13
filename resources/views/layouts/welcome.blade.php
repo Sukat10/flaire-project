@@ -25,12 +25,12 @@
         <header class="py-2 md:py-4 bg-transparent fixed top-0 right-0 left-0 z-50 header">
             <div class="w-full flex justify-end  md:justify-between items-center px-6 relative overflow-x-hidden xl:container">
                 <div class="hidden md:block w-3/12">
-                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-900 no-underline">
+                    <a href="{{ route('home') }}" class="text-lg font-semibold text-gray-900 no-underline">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
-                <nav class="navigation text-gray-900 text-sm sm:text-base w-fit max-w-[250px] md:w-3/12 flex flex-col md:flex-row gap-4 md:text-right capitalize transition-all justify-end right-[-100vw] md:right-0 shadow-lg md:shadow-none p-5 md:p-0 fixed z-50 md:relative md:top-0 rounded-md bg-[white] md:bg-[transparent]">
+                <nav class="navigation text-gray-900 text-sm sm:text-base w-fit max-w-[250px] md:w-3/12 flex flex-col md:flex-row gap-4 md:text-right capitalize transition-all duration-500 top-15 justify-end right-[-100vw] md:right-0 shadow-lg md:shadow-none p-5 md:p-0 fixed z-50 md:relative md:top-0 rounded-md bg-[white] md:bg-[transparent]">
                     <a class="no-underline hover:underline md:hidden" href="/">{{ __('Home') }}</a>
                     @guest
                     <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -38,15 +38,15 @@
                     <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endif
                     @else
-                    <a href="http://" class="no-underline hover:underline">
+                    <a href="{{ route('templates') }}" class="no-underline hover:underline">
                         templates
                     </a>
-                    <a href="http://" class="no-underline hover:underline">
+                    <a href="{{ route('instructions') }}" class="no-underline hover:underline">
                         instructions
                     </a>
-                    <a href="http://" class="no-underline hover:underline">
-                        menu
-                    </a>
+                    {{-- <a href="{{ route('category') }}" class="no-underline hover:underline">
+                        category
+                    </a> --}}
                     <!-- <span>{{ Auth::user()->name }}</span> -->
 
                     <a href="{{ route('logout') }}" class="no-underline hover:underline" onclick="event.preventDefault();
@@ -97,7 +97,6 @@
             e.preventDefault();
             menu.classList.toggle("right-[-100vw]");
             menu.classList.toggle("right-5");
-            menu.classList.toggle("top-15");
         });
     </script>
 </body>

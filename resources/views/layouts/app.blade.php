@@ -15,22 +15,19 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        crossorigin="anonymous"> -->
 </head>
 
 <body class="bg-white h-screen antialiased leading-none font-sans">
     <div id="app">
-        <header class="py-2 md:py-4 bg-app-red fixed w-full z-50">
-            <div class="max-w-screen-xl mx-auto flex justify-between items-center px-6">
+        <header class="py-2 md:pt-4 bg-app-red sticky top-0 left-0 w-full z-50 app-header">
+            <div class="max-w-screen-xl mx-auto flex justify-between items-center px-6 text-[whitesmoke]">
                 <div class="hidden md:block">
-                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
+                    <a href="{{ route('home') }}" class="text-lg font-semibold no-underline">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
-                <form action="{{ route('search') }}" method="get" class="grow text-dark">
+                <form action="{{ route('search') }}" method="get" class="grow text-dark md:max-w-[75vw] md:mr-10 lg:m-0 lg:max-w-full">
                     {{ csrf_field() }}
                     <div class="flex items-center rounded-md self-center bg-white p-2 px-3">
                         <i class="fa fa-search"></i>
@@ -40,22 +37,16 @@
                 </form>
 
                 <nav
-                    class="space-x-2 text-gray-300 text-sm sm:text-base hidden md:block w-3/12 text-right capitalize">
-                    @guest
-                    <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    @if (Route::has('register'))
-                    <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    @endif
-                    @else
+                    class="shrink navigation text-gray-900 text-sm sm:text-base w-fit max-w-[75vw] w-full md:w-3/12 flex flex-col lg:flex-row gap-4 lg:text-right capitalize transition-all duration-500 top-0 justify-start right-[-100vw] lg:right-0 shadow-lg h-screen lg:h-fit lg:shadow-none p-5 md:pt-20 lg:p-0 fixed z-50 lg:relative lg:top-0 rounded-l-md bg-[white] lg:bg-[transparent] overflow-y-auto">
                     <a href="{{ route('templates') }}" class="no-underline hover:underline">
                         templates
                     </a>
                     <a href="{{ route('instructions') }}" class="no-underline hover:underline">
                         instructions
                     </a>
-                    <a href="{{ route('menu') }}" class="no-underline hover:underline">
+                    {{-- <a href="{{ route('menu') }}" class="no-underline hover:underline">
                         menu
-                    </a>
+                    </a> --}}
                     {{-- <span>{{ Auth::user()->name }}</span> --}}
 
                     <a href="{{ route('logout') }}" class="no-underline hover:underline" onclick="event.preventDefault();
@@ -63,26 +54,47 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                         {{ csrf_field() }}
                     </form>
-                    @endguest
                 </nav>
+
+
+                <button class="hidden md:block lg:hidden p-2 navToggle fixed z-[52] right-3 " onclick="toggleNav()">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-icon">
+                        <path d=" M21.0938 18.75H0.78125C0.57405 18.75 0.375336 18.8323 0.228823 18.9788C0.08231 19.1253
+                        0 19.324 0 19.5312L0 21.0938C0 21.301 0.08231 21.4997 0.228823 21.6462C0.375336 21.7927 0.57405
+                        21.875 0.78125 21.875H21.0938C21.301 21.875 21.4997 21.7927 21.6462 21.6462C21.7927 21.4997
+                        21.875 21.301 21.875 21.0938V19.5312C21.875 19.324 21.7927 19.1253 21.6462 18.9788C21.4997
+                        18.8323 21.301 18.75 21.0938 18.75ZM21.0938 12.5H0.78125C0.57405 12.5 0.375336 12.5823 0.228823
+                        12.7288C0.08231 12.8753 0 13.074 0 13.2812L0 14.8438C0 15.051 0.08231 15.2497 0.228823
+                        15.3962C0.375336 15.5427 0.57405 15.625 0.78125 15.625H21.0938C21.301 15.625 21.4997 15.5427
+                        21.6462 15.3962C21.7927 15.2497 21.875 15.051 21.875 14.8438V13.2812C21.875 13.074 21.7927
+                        12.8753 21.6462 12.7288C21.4997 12.5823 21.301 12.5 21.0938 12.5ZM21.0938 6.25H0.78125C0.57405
+                        6.25 0.375336 6.33231 0.228823 6.47882C0.08231 6.62534 0 6.82405 0 7.03125L0 8.59375C0 8.80095
+                        0.08231 8.99966 0.228823 9.14618C0.375336 9.29269 0.57405 9.375 0.78125 9.375H21.0938C21.301
+                        9.375 21.4997 9.29269 21.6462 9.14618C21.7927 8.99966 21.875 8.80095 21.875
+                        8.59375V7.03125C21.875 6.82405 21.7927 6.62534 21.6462 6.47882C21.4997 6.33231 21.301 6.25
+                        21.0938 6.25ZM21.0938 0H0.78125C0.57405 0 0.375336 0.08231 0.228823 0.228823C0.08231 0.375336 0
+                        0.57405 0 0.78125L0 2.34375C0 2.55095 0.08231 2.74966 0.228823 2.89618C0.375336 3.04269 0.57405
+                        3.125 0.78125 3.125H21.0938C21.301 3.125 21.4997 3.04269 21.6462 2.89618C21.7927 2.74966 21.875
+                        2.55095 21.875 2.34375V0.78125C21.875 0.57405 21.7927 0.375336 21.6462 0.228823C21.4997 0.08231
+                        21.301 0 21.0938 0Z" fill="currentColor" />
+                    </svg>
+                </button>
             </div>
             <nav class="p-2 md:px-5 md:pt-5 pb-0 text-white container mx-auto">
                 <ul
-                    class="flex justify-around items-end text-sm font-bold gap-x-3 overflow-hidden overflow-x-auto scrolling-auto scroll-nav">
-                    <li class="px-2 lg:px-3 flex items-center">
-                        <a class="" href="#">All</a>
-                    </li>
+                    class="flex justify-around items-end text-sm font-bold gap-x-3 overflow-hidden overflow-x-auto scrolling-auto scroll-nav text-[whitesmoke]">
+                    <a class=" text-white px-2 lg:px-3 inline-block " href="#">All</a>
                 </ul>
             </nav>
 
         </header>
 
-        <main class="py-2 pt-20"></main>
+        <main class="pt-5 pb-15">
         @yield('content')
         </main>
 
-        <footer class="py-2 bg-white fixed bottom-0 w-full border-grey-200 border-t md:hidden">
-            <nav class="flex content-center justify-around text-center uppercase">
+        <footer class="py-2 bg-white fixed bottom-0 w-full border-grey-200 border-t bg-[white] md:hidden z-[60]">
+            <nav class="flex items-baseline justify-around text-center uppercase">
                 <a href="http://" class="block">
                     <div class="flex flex-col items-center justify-center">
                         <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +117,7 @@
                         <small class="text-xs">instructions</small>
                     </div>
                 </a>
-                <a href="http://" class="block">
+                <button class="block outline-none border-none uppercase" onclick="toggleNav()">
                     <div class="flex flex-col items-center justify-center">
                         <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -118,10 +130,23 @@
                  <br>
                         <small class="text-xs">menu</small>
                     </div>
-                </a>
+                </button>
             </nav>
         </footer>
     </div>
+
+    <script>
+        const menu = document.querySelector("nav.navigation");
+        const topNavToggle = document.querySelector("button.navToggle");
+        const header = document.querySelector("header.header")
+
+        const toggleNav = () => {
+            menu.classList.toggle("right-[-100vw]");
+            menu.classList.toggle("right-0");
+            menu.classList.toggle("!text-[black]")
+            topNavToggle.classList.toggle("!text-[black]")
+        }
+    </script>
 </body>
 
 </html>
