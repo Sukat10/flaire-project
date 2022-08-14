@@ -27,7 +27,7 @@ Route::get('/contact-us', function () {
 })->name('contact-us');
 
 Route::get('/instructions', function () {
-    return view('instructions');
+    return view('comingsoon');
 })->name('instructions');
 
 Route::get('/designs', function () {

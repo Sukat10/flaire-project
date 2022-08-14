@@ -38,8 +38,8 @@
                     <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endif
                     @else
-                    <a href="{{ route('templates') }}" class="no-underline hover:underline">
-                        templates
+                    <a href="{{ route('designs') }}" class="no-underline hover:underline">
+                        designs
                     </a>
                     <a href="{{ route('instructions') }}" class="no-underline hover:underline">
                         instructions
