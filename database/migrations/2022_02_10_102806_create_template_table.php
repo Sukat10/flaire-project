@@ -18,6 +18,7 @@ class CreateTemplateTable extends Migration
             $table->string('title');
             $table->longText('content');
             $table->string('template');
+            $table->string('link');
             $table->timestamps();
             $table->foreignId('cat_id')->references('id')->on('category')
                 ->constrained()

@@ -30,9 +30,25 @@ Route::get('/instructions', function () {
     return view('instructions');
 })->name('instructions');
 
-Route::get('/templates', function () {
-    return view('templates');
-})->name('templates');
+Route::get('/designs', function () {
+    return view('comingsoon');
+})->name('designs');
+
+Route::get('/social-calender', function () {
+    return view('comingsoon');
+})->name('social-calender');
+
+Route::get('/affiliate-program', function () {
+    return view('comingsoon');
+})->name('affiliate-program');
+
+Route::get('/contact-us', function () {
+    return view('comingsoon');
+})->name('contact-us');
+
+Route::get('/copyright', function () {
+    return view('comingsoon');
+})->name('copyright');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 

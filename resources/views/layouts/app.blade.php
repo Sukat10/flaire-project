@@ -31,22 +31,37 @@
                     {{ csrf_field() }}
                     <div class="flex items-center rounded-md self-center bg-white p-2 px-3">
                         <i class="fa fa-search"></i>
-                        <input class="px-4 h-12 outline-none border-none flex-grow" type="text" name="" id=""
+                        <input class="px-4 h-12 outline-none border-none flex-grow text-[black]" type="search" name="" id=""
                             placeholder="search flaire" style="padding: .3rem; border-radius:10px" />
                     </div>
                 </form>
 
                 <nav
-                    class="shrink navigation text-gray-900 text-sm sm:text-base w-fit max-w-[75vw] w-full md:w-3/12 flex flex-col lg:flex-row gap-4 lg:text-right capitalize transition-all duration-500 top-0 justify-start right-[-100vw] lg:right-0 shadow-lg h-screen lg:h-fit lg:shadow-none p-5 md:pt-20 lg:p-0 fixed z-50 lg:relative lg:top-0 rounded-l-md bg-[white] lg:bg-[transparent] overflow-y-auto">
-                    <a href="{{ route('templates') }}" class="no-underline hover:underline">
-                        templates
-                    </a>
+                    class="shrink navigation text-gray-900 text-sm sm:text-base w-fit max-w-[75vw] w-full md:w-3/12 flex flex-col gap-4 capitalize transition-all duration-500 top-0 justify-start right-[-100vw] shadow-lg h-screen p-5 pt-20 fixed z-50 bg-[white] overflow-y-auto">
+                    <div class="flex flex-col items-center justify-end gap-3 pb-2 border-[#ccc] border-b">
+                        <div class="rounded-full h-[150px] w-[150px] bg-app-red font-black text-6xl text-[white] flex items-center justify-center">
+                            <h1>S.G</h1>
+                        </div>
+                        <small class="text-base lowercase">samsongobet@gmail.com</small>
+                    </div>
                     <a href="{{ route('instructions') }}" class="no-underline hover:underline">
                         instructions
                     </a>
-                    {{-- <a href="{{ route('menu') }}" class="no-underline hover:underline">
-                        menu
-                    </a> --}}
+                    <a href="{{ route('designs') }}" class="no-underline hover:underline">
+                        designs
+                    </a>
+                    <a href="{{ route('social-calender') }}" class="no-underline hover:underline">
+                        social calender
+                    </a>
+                    <a href="{{ route('affiliate-program') }}" class="no-underline hover:underline">
+                        affiliate program
+                    </a>
+                    <a href="{{ route('contact-us') }}" class="no-underline hover:underline">
+                        contact us
+                    </a>
+                    <a href="{{ route('copyright') }}" class="no-underline hover:underline">
+                        copyright
+                    </a>
                     {{-- <span>{{ Auth::user()->name }}</span> --}}
 
                     <a href="{{ route('logout') }}" class="no-underline hover:underline" onclick="event.preventDefault();
@@ -57,7 +72,7 @@
                 </nav>
 
 
-                <button class="hidden md:block lg:hidden p-2 navToggle fixed z-[52] right-3 " onclick="toggleNav()">
+                <button class="hidden md:block p-2 navToggle z-[52] right-3 " onclick="toggleNav()">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="menu-icon">
                         <path d=" M21.0938 18.75H0.78125C0.57405 18.75 0.375336 18.8323 0.228823 18.9788C0.08231 19.1253
                         0 19.324 0 19.5312L0 21.0938C0 21.301 0.08231 21.4997 0.228823 21.6462C0.375336 21.7927 0.57405

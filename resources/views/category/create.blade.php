@@ -21,41 +21,7 @@
                 </div>
             </div>
         </section>
-
-        <section>
-            <h2>Sales post</h2>
-            <div class="flex md:flex-wrap">
-                <div class="w-[100px] h-[100px]">
-                    <a href="#" class="h-full w-full">
-                        <img src="{{ route('logout') }}" alt="" class="h-full w-full">
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Holiday post</h2>
-            <div class="flex md:flex-wrap">
-                <div class="w-[100px] h-[100px]">
-                    <a href="#" class="h-full w-full">
-                        <img src="{{ route('logout') }}" alt="" class="h-full w-full">
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Sales video</h2>
-            <div class="flex md:flex-wrap">
-                <div class="w-[100px] h-[100px]">
-                    <a href="#" class="h-full w-full">
-                        <img src="{{ route('logout') }}" alt="" class="h-full w-full">
-                    </a>
-                </div>
-            </div>
-        </section>
     </div>
 </main>
-
 
 @endsection
