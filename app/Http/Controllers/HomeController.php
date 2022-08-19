@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Template;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['templates' => Template::all()]);
+        return view('home', ['categories' => Category::with('templates')]);
     }
 
     public function show()
