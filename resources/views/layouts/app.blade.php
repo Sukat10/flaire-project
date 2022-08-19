@@ -97,9 +97,14 @@
                     </svg>
                 </button>
             </div>
-            <nav class="p-2 md:px-5 md:pt-5 pb-0 text-white container mx-auto">
+            <div class="container max-w-screen-xl capitalize relative mx-auto flex px-5 justify-between items-center text-[white]">
+                <span>categories</span>
+                <a href="{{ route('category.index') }}" class="no-underline hover:underline text-right gap-2 min-w-[120px]">see all</a>
+            </div>
+
+            <nav class="p-1 text-white  max-w-screen-xl container mx-auto">
                 <ul
-                    class="flex justify-around container items-end text-sm font-bold gap-x-3 pb-3 overflow-hidden overflow-x-auto scroll-nav text-[whitesmoke]">
+                    class="flex justify-around items-end text-sm font-bold gap-x-3 pb-3 overflow-hidden overflow-x-auto scroll-nav text-[whitesmoke]">
                     <a class=" text-white px-2 lg:px-3 inline-block " href="#">All</a>
                 </ul>
             </nav>
@@ -112,7 +117,7 @@
         </main>
 
         {{-- footer --}}
-        <footer class="py-2 bg-white fixed w-full left-0 bottom-0 container max-w-screen-xl flex flex-col justify-end items-end border-[#dddddd] border-0 border-t bg-[white]">
+        <footer class="py-2 md:py-0 bg-white fixed w-full left-0 right-0 bottom-0 container mx-auto  max-w-screen-xl flex flex-col justify-end items-end border-[#dddddd] border-0 border-t bg-[white]">
 
             <div class="absolute bottom-16 right-2">
                 {{-- add button --}}
