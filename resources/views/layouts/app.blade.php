@@ -39,8 +39,8 @@
 
                 <nav
                     class="shrink navigation text-gray-900 text-sm sm:text-base w-fit max-w-[75vw] w-full md:w-3/12 flex flex-col gap-4 capitalize transition-all duration-700 justify-start -top-4 right-0 shadow-lg h-0 absolute z-50 bg-[white] overflow-y-auto ">
-                    <div class="flex flex-col items-center justify-end gap-3 pb-2 border-[#ccc] border-b">
                         <button class="p-2 navToggle right-3 rounded-full btn absolute top-5 " onclick="toggleNav()"> <img src="{{asset('images/close.svg')}}" class="w-5 h-5"/></button>
+                    <div class="flex flex-col items-center justify-end gap-3 pb-2 border-[#ccc] border-b sticky top-0">
                         <div class="rounded-full h-[150px] w-[150px] bg-app-red font-black text-6xl text-[white] flex items-center justify-center">
                             <h1>S.G</h1>
                         </div>
@@ -105,7 +105,7 @@
             <nav class="p-1 text-white  max-w-screen-xl container mx-auto">
                 <ul
                     class="flex justify-around items-end text-sm font-bold gap-x-3 pb-3 overflow-hidden overflow-x-auto scroll-nav text-[whitesmoke]">
-                    <a class=" text-white px-2 lg:px-3 inline-block " href="#">All</a>
+                    <a class=" text-white px-2 lg:px-3 inline-block " href="{{route('category.index')}}">All</a>
                 </ul>
             </nav>
 
@@ -183,10 +183,9 @@
         const addMenu = document.getElementById("add_menu")
 
         const toggleAddMenu = () => {
-            console.log(addMenu)
+            addMenu.classList.toggle("p-3");
             addMenu.classList.toggle("h-0");
             addMenu.classList.toggle("w-0");
-            addMenu.classList.toggle("p-3");
         }
 
         const toggleNav = () => {

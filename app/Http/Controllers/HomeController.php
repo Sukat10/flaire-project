@@ -27,9 +27,4 @@ class HomeController extends Controller
     {
         return view('home', ['categories' => Category::with('templates')]);
     }
-
-    public function show()
-    {
-        return view('home', ['template' => Template::show()]);
-    }
 }
