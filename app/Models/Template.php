@@ -18,6 +18,8 @@ class Template extends Model
         'cat_id',
         'content',
         'template',
+        'link',
+        'slug',
     ];
 
     protected $table = 'template';

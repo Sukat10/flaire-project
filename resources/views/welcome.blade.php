@@ -16,7 +16,7 @@
         </p>
 
         <div class="self-end md:self-center w-full md:hidden pb-10">
-            <img src="undraw_Access_account_re_8spm 1.png" alt="" srcset="" class="w-full border-[#ccc] border-0 border-b-2  md:border-none max-w-xs mx-auto">
+            <img src="{{asset('images/access_account.png')}}" alt="" srcset="" class="w-full border-[#ccc] border-0 border-b-2  md:border-none max-w-xs mx-auto">
         </div>
 
         <h6 class="font-semibold  text-3xl">Let Get You Started</h6>
@@ -30,7 +30,7 @@
     </div>
     <div class="content-center items-center justify-center bottom-20 right-10 hidden md:flex grow">
         <div class="self-end md:self-center ">
-            <img src="{{asset('images/access_account.svg')}}" alt="access account" class="h-full w-full">
+            <img src="{{asset('images/access_account.png')}}" alt="access account" class="h-full w-full">
         </div>
     </div>
 </main>

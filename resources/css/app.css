@@ -13,7 +13,7 @@
         @apply h-1;
     }
     .btn {
-        @apply py-3 px-2 text-center;
+        @apply py-3 px-2 text-center hover:bg-opacity-75;
     }
 
     .search-form{

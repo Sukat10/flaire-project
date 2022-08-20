@@ -15,7 +15,7 @@
             {{ csrf_field() }}
             <div class="flex flex-wrap p-2 px-3 gap-2">
                 <label for="name" class=" self-center w-full md:w-fit "> Name / Title:</label>
-                <input class="h-12 outline-none border-[#ccc] active:!border-[#3a0062] focus:!border-[#3a0062] border-0 border-b grow text-[black]" name="name"
+                <input class="h-12 outline-none border-[#ccc] active:!border-[#3a0062] focus:!border-[#3a0062] border-0 border-b grow text-[black]" type="search" name="name"
                     placeholder="category name / title" />
             </div>
 

@@ -79,7 +79,7 @@
             <div class="w-full md:w-[40%] flex items-center justify-center">
                 <div class="self-center w-full max-w-xs md:max-w-fit">
 
-                    <img src="undraw_Access_account_re_8spm 1.png" alt="" srcset="" class="w-full border-[#ccc] border-0 border-b-2  md:border-none">
+                    <img src="{{asset('images/access_account.png')}}" alt="" srcset="" class="w-full border-[#ccc] border-0 border-b-2  md:border-none">
                 </div>
             </div>
 

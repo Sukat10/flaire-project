@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $data['category'] = Category::with('templates');
+        $data['categories'] = Category::with('templates');
         return view('category.index', $data);
     }
 
@@ -27,7 +27,8 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('category.create');
+        $data['categories'] = Category::with('templates');
+        return view('category.create', $data);
     }
 
     /**
@@ -46,9 +47,10 @@ class CategoryController extends Controller
         $category = new Category;
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->save();
-        return redirect()->route('home')
-            ->with('success', 'Category has been created successfully.');
+        return $category->save() ?
+            redirect()->route('home')
+            ->with('status', 'Category has been created successfully.') :
+            redirect()->back()->with('status', 'error saving.');
     }
 
     /**
@@ -60,6 +62,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
+        $data['categories'] = Category::with('templates');
         return view('category.index', compact('category'));
     }
 

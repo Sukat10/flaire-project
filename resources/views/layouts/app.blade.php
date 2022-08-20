@@ -21,18 +21,18 @@
     <div id="app">
         {{-- header --}}
         <header class="py-2 md:pt-4 bg-app-red sticky top-0 left-0 w-full z-50 app-header">
-            <div class="max-w-screen-xl relative mx-auto flex justify-between items-center px-6 text-[whitesmoke]">
+            <div class="max-w-screen-xl relative mx-auto flex justify-between items-center px-3 md:px-6 text-[whitesmoke]">
                 <div class="hidden md:block">
                     <a href="{{ route('home') }}" class="text-lg font-semibold no-underline">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
-                <form action="{{ route('search') }}" method="get" class="grow text-dark md:max-w-[75vw] md:mr-10 lg:m-0 lg:max-w-full">
+                <form action="{{ route('search') }}" method="get" class="grow text-dark md:max-w-[75vw] md:mr-10 lg:m-0 lg:max-w-full md:px-10">
                     {{ csrf_field() }}
-                    <div class="flex items-center rounded-md self-center bg-white p-2 px-3">
-                        <i class="fa fa-search"></i>
-                        <input class="px-4 h-12 outline-none border-none flex-grow rounded-xl text-[black]" type="search" name="" id=""
+                    <div class="flex items-center rounded-2xl self-center bg-white px-3 gap-3 bg-[white]">
+                        <img src="{{asset('images/search.svg')}}" class="w-4 h-4"/>
+                        <input class="pr-3 h-10 outline-none border-none flex-grow rounded-2xl text-[black]" type="search" name="" id=""
                             placeholder="search flaire" />
                     </div>
                 </form>
@@ -97,22 +97,23 @@
                     </svg>
                 </button>
             </div>
-            <div class="container max-w-screen-xl capitalize relative mx-auto flex px-5 justify-between items-center text-[white]">
+
+            <div class="container max-w-screen-xl capitalize relative mx-auto py-1 flex px-6 justify-between items-center text-[white] text-sm">
                 <span>categories</span>
-                <a href="{{ route('category.index') }}" class="no-underline hover:underline text-right gap-2 min-w-[120px]">see all</a>
+                <a href="{{ route('categories.index') }}" class="no-underline hover:underline text-right gap-2 min-w-[120px]">see all</a>
             </div>
 
-            <nav class="p-1 text-white  max-w-screen-xl container mx-auto">
+            <nav class="p-1 text-white max-w-screen-xl container mx-auto">
                 <ul
                     class="flex justify-around items-end text-sm font-bold gap-x-3 pb-3 overflow-hidden overflow-x-auto scroll-nav text-[whitesmoke]">
-                    <a class=" text-white px-2 lg:px-3 inline-block " href="{{route('category.index')}}">All</a>
+                    <a class=" text-white px-2 lg:px-3 inline-block " href="{{route('categories.index')}}">All</a>
                 </ul>
             </nav>
 
         </header>
 
         {{-- main content --}}
-        <main class="pt-5 pb-15 container relative">
+        <main class="pt-5 pb-20 md:pb-15 container relative">
             @yield('content')
         </main>
 
@@ -123,15 +124,15 @@
                 {{-- add button --}}
                 @if( Auth::user()->role === 'admin' )
                 <div class="min-w-fit shadow-md rounded-md flex flex-col gap-2 capitalize absolute bottom-12 right-2 bg-[white] h-0 w-0 overflow-hidden transition-all duration-500 z-10" id="add_menu">
-                    <a href="{{ route('category.create') }}" class="no-underline hover:underline flex gap-2 min-w-[120px]">
+                    <a href="{{ route('categories.create') }}" class="no-underline hover:underline flex items-center gap-2 min-w-[120px]">
                         <img src="{{asset('images/category.svg')}}" class="w-7 h-7"/> <span>category</span>
                     </a>
-                    <a href="{{ route('template.create') }}" class="no-underline hover:underline flex gap-2 min-w-[120px]">
+                    <a href="{{ route('templates.create') }}" class="no-underline hover:underline flex items-center gap-2 min-w-[120px]">
                         <img src="{{asset('images/template.svg')}}" class="w-7 h-7"/> <span>template</span>
                     </a>
                 </div>
                 <div class="flex justify-end">
-                    <button class="rounded-full h-12 w-12 bg-app-red text-[white] text-3xl font-semibold shadow-md p-0 hover:bg-opacity-75  z-10" onclick="toggleAddMenu()"> + </button>
+                    <div class="rounded-full h-10 w-10 bg-app-red text-[white] flex justify-center items-center font-semibold shadow-md p-0 hover:bg-opacity-75 z-10 transition-all duration-500" id="add_btn" onclick="toggleAddMenu()"> <img src="{{asset('images/plus.svg')}}" class="w-5 h-5"/> </div>
                 </div>
                 @endif
             </div>
@@ -181,11 +182,13 @@
         const topNavToggle = document.querySelector("button.navToggle");
         const header = document.querySelector("header.header")
         const addMenu = document.getElementById("add_menu")
+        const addBtn = document.getElementById("add_btn")
 
         const toggleAddMenu = () => {
             addMenu.classList.toggle("p-3");
             addMenu.classList.toggle("h-0");
             addMenu.classList.toggle("w-0");
+            addBtn.classList.toggle('rotate-45')
         }
 
         const toggleNav = () => {

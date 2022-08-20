@@ -19,11 +19,14 @@ class CreateTemplateTable extends Migration
             $table->longText('content');
             $table->string('template');
             $table->string('link');
+            $table->string('slug');
             $table->timestamps();
             $table->foreignId('cat_id')->references('id')->on('category')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
+            $table->unique(['slug']);
         });
     }
 

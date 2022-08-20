@@ -54,8 +54,30 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Auth::routes();
 
+Route::redirect('/designs', '/templates');
+
 Route::middleware([Authenticate::class])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::resource('template', TemplateController::class);
-    Route::resource('category', CategoryController::class);
+
+    // admin only
+    Route::middleware(['admin'])->group(function () {
+        Route::resource('templates', TemplateController::class)->only([
+            'create', 'store', 'edit',
+        ]);
+        Route::post('templates/{template}', [TemplateController::class, 'update'])->name('template.update');
+        Route::post('templates/{template}', [TemplateController::class, 'destroy'])->name('template.destroy');
+        Route::resource('categories', CategoryController::class)->only([
+            'create', 'store', 'edit'
+        ]);
+        Route::post('categories/{category}', [TemplateController::class, 'update'])->name('category.update');
+        Route::post('categories/{category}', [TemplateController::class, 'destroy'])->name('category.destroy');
+    });
+    // end of admin only
+
+    Route::resource('templates', TemplateController::class)->only([
+        'index', 'show'
+    ]);
+    Route::resource('categories', CategoryController::class)->only([
+        'index', 'show'
+    ]);
 });
