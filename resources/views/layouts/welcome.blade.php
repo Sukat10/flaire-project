@@ -31,7 +31,7 @@
                 </div>
 
                 <nav class="navigation text-gray-900 text-sm sm:text-base w-fit max-w-[250px] md:w-3/12 flex flex-col md:flex-row gap-4 md:text-right capitalize transition-all duration-500 top-15 justify-end right-[-100vw] md:right-0 shadow-lg md:shadow-none p-5 md:p-0 fixed z-50 md:relative md:top-0 rounded-md bg-[white] md:bg-[transparent]">
-                    <a class="no-underline hover:underline md:hidden" href="/">{{ __('Home') }}</a>
+                    <a class="no-underline hover:underline md:hidden" href="{{route('home')}}">{{ __('Home') }}</a>
                     @guest
                     <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @if (Route::has('register'))

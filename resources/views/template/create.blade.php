@@ -20,29 +20,41 @@
 
         <form action="{{ route('templates.store') }}" method="post" class="grow text-dark md:max-w-[75vw] md:mr-10 lg:m-0 lg:max-w-full flex flex-wrap gap-2">
             {{ csrf_field() }}
-            <div class="flex flex-wrap p-2 px-3 gap-2 grow w-[1.3/2]">
+            <div class="flex flex-wrap p-2 px-3 gap-2 grow w-[48%]">
                 <label for="title" class=" self-center w-full md:w-fit ">  Title:</label>
-                <input class="h-12 outline-none border-[#ccc] active:!border-[#3a0062] focus:!border-[#3a0062] border-0 border-b grow text-[black]" name="title"
+                <input class="h-12 input grow text-[black]" name="title"
                     placeholder="category name / title" />
             </div>
 
-            <div class="flex flex-wrap p-2 px-3 gap-2 w-[0.5/2]">
+            <div class="flex flex-wrap p-2 px-3 gap-2 grow w-[48%]">
+                <label for="slug" class=" self-center w-full md:w-fit ">  Slug:</label>
+                <input class="h-12 input grow text-[black]" name="slug"
+                    placeholder="category_name_title" />
+            </div>
+
+            <div class="flex flex-wrap p-2 px-3 gap-2 w-[60%]">
+                <label for="template" class=" self-center w-full md:w-fit ">  Template:</label>
+                <input class="h-12 input grow text-[black]" name="template"
+                    placeholder="link to the preview of the template design http://canva.com/ygwquig" />
+            </div>
+
+            <div class="flex flex-wrap p-2 px-3 gap-2 grow sm:shrink w-[30%]">
                 <label for="cat_id" class=" self-center w-full md:w-fit ">  Category:</label>
-                <select class="h-12 outline-none border-[#ccc] bg-[transparent] active:!border-[#3a0062] focus:!border-[#3a0062] border-0 border-b grow text-[black]" name="cat_id"
+                <select class="h-12 outline-none bg-[transparent] input grow text-[black]" name="cat_id"
                     placeholder="category name / title" >
                     <option value="">All</option>
                 </select>
             </div>
 
             <div class="flex flex-wrap p-2 px-3 gap-2 w-full">
-                <label for="template" class=" self-center w-full md:w-fit ">  Template:</label>
-                <input class="h-12 outline-none border-[#ccc] active:!border-[#3a0062] focus:!border-[#3a0062] border-0 border-b grow text-[black]" name="template"
+                <label for="link" class=" self-center w-full md:w-fit ">  Template Link:</label>
+                <input class="h-12 input grow text-[black]" name="link"
                     placeholder="http://canva.com" />
             </div>
 
             <div class="flex flex-wrap p-2 px-3 gap-2 grow w-full">
                 <label for="name" class=" self-start w-full md:w-fit "> Content:</label>
-                <textarea class="min-h-[250px] resize-y outline-none border-[#ccc] active:!border-[#3a0062] focus:!border-[#3a0062] border-0 border-b grow text-[black] py-2" name="description"
+                <textarea class="min-h-[250px] resize-y input grow text-[black] py-2" name="description"
                     placeholder="type content here"></textarea>
             </div>
 

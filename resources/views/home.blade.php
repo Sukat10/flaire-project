@@ -13,15 +13,15 @@
 
         @isset($categories)
             @foreach ($categories as $category)
-            <section>
-                <h2 class="uppercase font-bold text-2xl">{{$category->name}}</h2>
-                <div class="flex md:flex-wrap">
+            <section class="py-5">
+                <h2 class="uppercase font-bold text-2xl pb-5">{{$category->name}}</h2>
+                <div class="flex overflow-x-hidden md:flex-wrap gap-5">
                     @foreach ($category->templates as $template)
-                    <div class="w-[100px] h-[100px]">
-                        {{$template->title}}
-                        <a href="" class="h-full w-full">
-                            <img src="" alt="" class="h-full w-full">
+                    <div class="capitalize w-40 h-40 md:w-60 md:h-60 relative">
+                        <a href="{{ route('templates.show',$template) }}" class="h-full w-full absolute top-0 left-0 rounded-lg overflow-hidden bg-app-blue bg-opacity-25">
+                            <img src="{{$template->template}}" alt="" class="h-full w-full rounded-lg">
                         </a>
+                        <p class="absolute break-words max-w-full max-h-full truncate p-2">{{$template->title}}</p>
                     </div>
                     @endforeach
                 </div>

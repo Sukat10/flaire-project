@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Template;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class TemplateController extends Controller
@@ -27,7 +28,8 @@ class TemplateController extends Controller
     public function create()
     {
         //
-        return view('template.create');
+        $data['categories'] = Category::all();
+        return view('template.create', $data);
     }
 
     /**
@@ -43,12 +45,14 @@ class TemplateController extends Controller
             'title' => 'required',
             'cat_id' => 'required',
             'content' => 'required',
-            'template' => 'required'
+            'template' => 'required',
+            'link' => 'required'
         ]);
         $template = new Template;
         $template->name = $request->title;
         $template->cat_id = $request->cat_id;
         $template->template = $request->template;
+        $template->link = $request->link;
         $template->content = $request->content;
         $template->save();
         return redirect()->route('home')
@@ -64,7 +68,8 @@ class TemplateController extends Controller
     public function show(Template $template)
     {
         //
-        return view('template.show', compact('template'));
+        $data['categories'] = Category::all();
+        return view('template.show', [...$data, compact('template')]);
     }
 
     /**
@@ -76,7 +81,8 @@ class TemplateController extends Controller
     public function edit(Template $template)
     {
         //
-        return view('template.edit', compact('template'));
+        $data['categories'] = Category::all();
+        return view('template.edit', [...$data, compact('template')]);
     }
 
     /**

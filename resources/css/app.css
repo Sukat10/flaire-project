@@ -19,4 +19,15 @@
     .search-form{
         max-width: calc(100vw - 150px) !important;
     }
+
+    .input{
+        @apply outline-none border-[#ccc] active:!border-[#3a0062] focus:!border-[#3a0062] border-0 border-b
+    }
+    
+    .cat_item{
+        @apply inline-block relative hover:bg-app-blue hover:bg-opacity-20 p-2 lg:px-3 border-[transparent] border-2
+    }
+    .cat_item.active {
+        @apply !border-[whitesmoke] !border-0 !border-b-2 
+    }
 }

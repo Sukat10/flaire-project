@@ -21,7 +21,7 @@
     <div id="app">
         {{-- header --}}
         <header class="bg-app-red sticky top-0 left-0 w-full z-50 app-header">
-            <div class="max-w-screen-xl relative p-3 mx-auto flex justify-between items-center md:px-6 text-[whitesmoke]">
+            <div class="relative p-3 container flex justify-between items-center md:px-6 text-[whitesmoke]">
                 <div class="hidden md:block">
                     <a href="{{ route('home') }}" class="text-lg font-semibold no-underline">
                         {{ config('app.name', 'Laravel') }}
@@ -101,23 +101,19 @@
 
         {{-- categories nav --}}
         <nav class="bg-app-red sticky top-0 left-0 w-full z-[49] app-header">
-            <div class="container max-w-screen-xl capitalize relative mx-auto py-1 flex px-6 justify-between items-center text-[white] text-sm">
+            <div class="container capitalize relative mx-auto py-1 flex px-6 justify-between items-center text-[white] text-sm">
                 <span>categories</span>
                 <a href="{{ route('categories.index') }}" class="no-underline hover:underline text-right gap-2 min-w-[120px]">see all</a>
             </div>
 
-            <div class="pt-1 px-6 text-white max-w-screen-xl container mx-auto">
+            <div class="pt-1 px-6 text-white container mx-auto">
                 <ul
-                    class="flex items-end text-sm font-semibold gap-x-3 overflow-hidden scroll-nav text-[whitesmoke]">
-                    <li class="inline-block hover:bg-app-blue  hover:bg-opacity-20 rounded-md p-2 lg:px-3">
-                        <a class="text-white h-full w-full" href="{{route('categories.index')}}">All</a>
-                    </li>
+                    class="flex items-end text-sm font-semibold overflow-hidden text-[whitesmoke]">
+                    <a class="cat_item" href="{{route('categories.index')}}">All</a>
 
                     @isset($categories)
                         @foreach ($categories as $category)
-                            <li class="inline-block capitalize hover:bg-app-blue hover:bg-opacity-20 rounded-md p-2 lg:px-3">
-                                <a class="text-white w-full" href="{{route('categories.show',$category)}}"><span class="!truncate ...">{{$category->name}}</span></a>
-                            </li>
+                            <a class="cat_item capitalize !truncate" href="{{route('categories.show',$category)}}">{{$category->name}}</a>
                         @endforeach
                     @endisset
 
@@ -197,6 +193,7 @@
         const header = document.querySelector("header.header")
         const addMenu = document.getElementById("add_menu")
         const addBtn = document.getElementById("add_btn")
+        const catLinks = document.querySelectorAll('a.cat_item')
 
         const toggleAddMenu = () => {
             addMenu.classList.toggle("p-3");
@@ -213,6 +210,17 @@
             menu.classList.toggle("!text-[black]")
             topNavToggle.classList.toggle("!text-[black]")
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if(catLinks){
+                catLinks.forEach(catLink => {
+                    if(catLink.href === location.href) catLink.classList.add('active')
+                });
+            }
+            alert("DOM ready!");
+        })
+
+        // window.getComputedStyle(el, ':before')
     </script>
 </body>
 

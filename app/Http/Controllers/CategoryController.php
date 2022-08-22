@@ -66,7 +66,7 @@ class CategoryController extends Controller
     {
         //
         $data['categories'] = Category::with('templates')->get();
-        return view('category.index', [...$data, compact('category')]);
+        return view('category.index', compact('category'), [...$data,]);
     }
 
     /**
@@ -79,7 +79,7 @@ class CategoryController extends Controller
     {
         //
         $data['categories'] = Category::with('templates');
-        return view('category.edit', [...$data, compact('category')]);
+        return view('category.edit', compact('category'), [...$data,]);
     }
 
     /**
