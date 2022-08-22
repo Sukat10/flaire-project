@@ -988,9 +988,6 @@ video {
 .overflow-hidden {
   overflow: hidden;
 }
-.overflow-x-auto {
-  overflow-x: auto;
-}
 .overflow-y-auto {
   overflow-y: auto;
 }
@@ -1120,13 +1117,13 @@ video {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 .pb-10 {
   padding-bottom: 2.5rem;
@@ -1145,9 +1142,6 @@ video {
 }
 .pb-2 {
   padding-bottom: 0.5rem;
-}
-.pb-3 {
-  padding-bottom: 0.75rem;
 }
 .pt-5 {
   padding-top: 1.25rem;
@@ -1294,6 +1288,14 @@ video {
 }
 .duration-500 {
   transition-duration: 500ms;
+}
+.hover\:bg-app-blue:hover {
+        background-color: #3a0062;
+        --tw-bg-opacity: 1;
+        background-color: rgb(58 0 98 / var(--tw-bg-opacity));
+    }
+.hover\:bg-opacity-20:hover {
+  --tw-bg-opacity: 0.2;
 }
 .hover\:bg-opacity-75:hover {
   --tw-bg-opacity: 0.75;

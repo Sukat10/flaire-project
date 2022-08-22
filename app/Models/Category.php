@@ -22,6 +22,6 @@ class Category extends Model
 
     public function templates()
     {
-        return $this->hasMany(Template::class, null, 'id');
+        return $this->hasMany(Template::class, 'cat_id', 'id');
     }
 }

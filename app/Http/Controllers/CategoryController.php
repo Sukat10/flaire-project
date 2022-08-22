@@ -15,8 +15,11 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $data['categories'] = Category::with('templates');
-        return view('category.index', $data);
+        $data['categories'] = Category::with('templates')->get();
+        return view(
+            'category.index',
+            $data
+        );
     }
 
     /**
@@ -27,7 +30,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        $data['categories'] = Category::with('templates');
+        $data['categories'] = Category::all();
         return view('category.create', $data);
     }
 
@@ -62,8 +65,8 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
-        $data['categories'] = Category::with('templates');
-        return view('category.index', compact('category'));
+        $data['categories'] = Category::with('templates')->get();
+        return view('category.index', [...$data, compact('category')]);
     }
 
     /**
@@ -75,7 +78,8 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
-        return view('category.edit', compact('category'));
+        $data['categories'] = Category::with('templates');
+        return view('category.edit', [...$data, compact('category')]);
     }
 
     /**

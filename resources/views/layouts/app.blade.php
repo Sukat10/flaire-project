@@ -20,19 +20,19 @@
 <body class="bg-white min-h-screen antialiased leading-none font-sans">
     <div id="app">
         {{-- header --}}
-        <header class="py-2 md:pt-4 bg-app-red sticky top-0 left-0 w-full z-50 app-header">
-            <div class="max-w-screen-xl relative mx-auto flex justify-between items-center px-3 md:px-6 text-[whitesmoke]">
+        <header class="bg-app-red sticky top-0 left-0 w-full z-50 app-header">
+            <div class="max-w-screen-xl relative p-3 mx-auto flex justify-between items-center md:px-6 text-[whitesmoke]">
                 <div class="hidden md:block">
                     <a href="{{ route('home') }}" class="text-lg font-semibold no-underline">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
-                <form action="{{ route('search') }}" method="get" class="grow text-dark md:max-w-[75vw] md:mr-10 lg:m-0 lg:max-w-full md:px-10">
+                <form action="{{ route('search') }}" method="get" class="grow text-dark  md:mr-10 md:px-10">
                     {{ csrf_field() }}
                     <div class="flex items-center rounded-2xl self-center bg-white px-3 gap-3 bg-[white]">
                         <img src="{{asset('images/search.svg')}}" class="w-4 h-4"/>
-                        <input class="pr-3 h-10 outline-none border-none flex-grow rounded-2xl text-[black]" type="search" name="" id=""
+                        <input class="pr-3 h-10 outline-none border-none grow rounded-2xl text-[black]" type="search" name="" id=""
                             placeholder="search flaire" />
                     </div>
                 </form>
@@ -97,20 +97,34 @@
                     </svg>
                 </button>
             </div>
+        </header>
 
+        {{-- categories nav --}}
+        <nav class="bg-app-red sticky top-0 left-0 w-full z-[49] app-header">
             <div class="container max-w-screen-xl capitalize relative mx-auto py-1 flex px-6 justify-between items-center text-[white] text-sm">
                 <span>categories</span>
                 <a href="{{ route('categories.index') }}" class="no-underline hover:underline text-right gap-2 min-w-[120px]">see all</a>
             </div>
 
-            <nav class="p-1 text-white max-w-screen-xl container mx-auto">
+            <div class="pt-1 px-6 text-white max-w-screen-xl container mx-auto">
                 <ul
-                    class="flex justify-around items-end text-sm font-bold gap-x-3 pb-3 overflow-hidden overflow-x-auto scroll-nav text-[whitesmoke]">
-                    <a class=" text-white px-2 lg:px-3 inline-block " href="{{route('categories.index')}}">All</a>
-                </ul>
-            </nav>
+                    class="flex items-end text-sm font-semibold gap-x-3 overflow-hidden scroll-nav text-[whitesmoke]">
+                    <li class="inline-block hover:bg-app-blue  hover:bg-opacity-20 rounded-md p-2 lg:px-3">
+                        <a class="text-white h-full w-full" href="{{route('categories.index')}}">All</a>
+                    </li>
 
-        </header>
+                    @isset($categories)
+                        @foreach ($categories as $category)
+                            <li class="inline-block capitalize hover:bg-app-blue hover:bg-opacity-20 rounded-md p-2 lg:px-3">
+                                <a class="text-white w-full" href="{{route('categories.show',$category)}}"><span class="!truncate ...">{{$category->name}}</span></a>
+                            </li>
+                        @endforeach
+                    @endisset
+
+                </ul>
+            </div>
+        </nav>
+
 
         {{-- main content --}}
         <main class="pt-5 pb-20 md:pb-15 container relative">
@@ -138,7 +152,7 @@
             </div>
 
             <div class="w-full border-grey-200 md:hidden z-[60]">
-                <nav class="flex items-baseline justify-around text-center uppercase container">                    
+                <nav class="flex items-baseline justify-between text-center capitalize container">                    
                     <a href="{{ route('home')}}" class="block">
                         <div class="flex flex-col items-center justify-center">
                             <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +175,7 @@
                             <small class="text-xs">instructions</small>
                         </div>
                     </a>
-                    <button class="block outline-none border-none uppercase" onclick="toggleNav()">
+                    <button class="block outline-none border-none capitalize" onclick="toggleNav()">
                         <div class="flex flex-col items-center justify-center">
                             <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path

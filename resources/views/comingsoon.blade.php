@@ -5,6 +5,6 @@
     <div class="max-w-xs container flex ">
         <img src=" {{asset('images/loading.svg')}} " alt="coming soon" class="max-w-full max-h-full">
     </div>
-    <h1 class="font-bold text-3xl text-[#a3002e] uppercase my-0 leading-[0]"> coming soon </h1>
+    <h1 class="font-bold text-2xl md:text-6xl text-[#a3002e] uppercase my-0 leading-none"> coming soon </h1>
 </main>
 @endsection
