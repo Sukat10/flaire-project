@@ -36,7 +36,12 @@
                 <label for="cat_id" class=" self-center w-full md:w-fit ">  Category:</label>
                 <select class="h-12 outline-none bg-[transparent] input grow text-[black]" name="cat_id"
                     placeholder="category name / title" >
-                    <option value="">All</option>
+                    <option value="" hidden>All</option>
+                    @if($categories)
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    @endif
                 </select>
                 @if($errors->has('cat_id'))
                     <small class="text-[red] block w-full">{{$errors->first('cat_id')}}</small>

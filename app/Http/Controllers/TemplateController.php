@@ -49,17 +49,19 @@ class TemplateController extends Controller
             'template' => 'required|url',
             'link' => 'required|url'
         ]);
+        $slug = $request->slug;
+        $title = $request->title;
+        $slug = $slug ? Str::slug($slug) : Str::slug($title);
         $template = new Template;
-        $template->name = $request->title;
+        $template->title = $title;
         $template->cat_id = $request->cat_id;
         $template->template = $request->template;
         $template->link = $request->link;
         $template->content = $request->content;
+        $template->slug = $slug;
         $template->save();
-        return $template->save() ?
-            redirect()->route('home')
-            ->with('success', 'Template has been created successfully.') :
-            redirect()->back()->with('errors', $validation);
+        return redirect()->route('home')
+            ->with('success', 'Template has been created successfully.');
     }
 
     /**
@@ -115,10 +117,9 @@ class TemplateController extends Controller
         $template->template = $request->template;
         $template->content = $request->content;
         $template->slug = $slug;
-        return $template->save() ?
-            redirect()->route('home')
-            ->with('success', 'Template has been created successfully.') :
-            redirect()->back()->with('errors', $validation);
+        $template->save();
+        return  redirect()->route('home')
+            ->with('success', 'Template has been created successfully.');
     }
 
     /**
