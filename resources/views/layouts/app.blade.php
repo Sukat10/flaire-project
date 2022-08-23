@@ -30,9 +30,9 @@
 
                 <form action="{{ route('search') }}" method="get" class="grow text-dark  md:mr-10 md:px-10">
                     {{ csrf_field() }}
-                    <div class="flex items-center rounded-2xl self-center bg-white px-3 gap-3 bg-[white]">
+                    <div class="flex items-center rounded-md self-center bg-white px-3 gap-3 bg-[white]">
                         <img src="{{asset('images/search.svg')}}" class="w-4 h-4"/>
-                        <input class="pr-3 h-10 outline-none border-none grow rounded-2xl text-[black]" type="search" name="" id=""
+                        <input class="pr-3 h-10 outline-none border-none grow rounded-md text-[black]" type="search" name="" id=""
                             placeholder="search flaire" />
                     </div>
                 </form>
@@ -193,7 +193,8 @@
         const header = document.querySelector("header.header")
         const addMenu = document.getElementById("add_menu")
         const addBtn = document.getElementById("add_btn")
-
+        const catLinks = document.querySelectorAll('a.cat_item')
+        
         const toggleAddMenu = () => {
             addMenu.classList.toggle("p-3");
             addMenu.classList.toggle("h-0");
@@ -209,6 +210,10 @@
             menu.classList.toggle("!text-[black]")
             topNavToggle.classList.toggle("!text-[black]")
         }
+
+        catLinks.forEach(catLink => {
+            if (location.href === catLink.href) catLink.classList.add('active')
+        });
     </script>
 </body>
 
