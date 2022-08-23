@@ -193,7 +193,6 @@
         const header = document.querySelector("header.header")
         const addMenu = document.getElementById("add_menu")
         const addBtn = document.getElementById("add_btn")
-        const catLinks = document.querySelectorAll('a.cat_item')
 
         const toggleAddMenu = () => {
             addMenu.classList.toggle("p-3");
@@ -210,17 +209,6 @@
             menu.classList.toggle("!text-[black]")
             topNavToggle.classList.toggle("!text-[black]")
         }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            if(catLinks){
-                catLinks.forEach(catLink => {
-                    if(catLink.href === location.href) catLink.classList.add('active')
-                });
-            }
-            alert("DOM ready!");
-        })
-
-        // window.getComputedStyle(el, ':before')
     </script>
 </body>
 

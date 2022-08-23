@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Template;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TemplateController extends Controller
 {
@@ -41,12 +42,12 @@ class TemplateController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'title' => 'required',
-            'cat_id' => 'required',
-            'content' => 'required',
-            'template' => 'required',
-            'link' => 'required'
+        $validation = $request->validate([
+            'title' => 'required|min:3',
+            'cat_id' => 'required|numeric',
+            'content' => 'required|min:3',
+            'template' => 'required|url',
+            'link' => 'required|url'
         ]);
         $template = new Template;
         $template->name = $request->title;
@@ -55,8 +56,10 @@ class TemplateController extends Controller
         $template->link = $request->link;
         $template->content = $request->content;
         $template->save();
-        return redirect()->route('home')
-            ->with('success', 'Template has been created successfully.');
+        return $template->save() ?
+            redirect()->route('home')
+            ->with('success', 'Template has been created successfully.') :
+            redirect()->back()->with('errors', $validation);
     }
 
     /**
@@ -95,20 +98,27 @@ class TemplateController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
-            'title' => 'required',
-            'cat_id' => 'required',
-            'content' => 'required',
-            'template' => 'required'
+        $validation = $request->validate([
+            'title' => 'required|min:3',
+            'cat_id' => 'required|numeric',
+            'content' => 'required|min:3',
+            'template' => 'required|url',
+            'link' => 'required|url'
         ]);
+        // Str::slug('Laravel 5 Framework', '-')
+        $slug = $request->slug;
+        $title = $request->title;
+        $slug = $slug ? Str::slug($slug) : Str::slug($title);
         $template = Template::find($id);
-        $template->name = $request->title;
+        $template->title = $title;
         $template->cat_id = $request->cat_id;
         $template->template = $request->template;
         $template->content = $request->content;
-        $template->save();
-        return redirect()->route('home')
-            ->with('success', 'Template has been updated successfully.');
+        $template->slug = $slug;
+        return $template->save() ?
+            redirect()->route('home')
+            ->with('success', 'Template has been created successfully.') :
+            redirect()->back()->with('errors', $validation);
     }
 
     /**

@@ -44,16 +44,15 @@ class CategoryController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|unique:category|min:2',
+            'description' => 'required|min:3',
         ]);
         $category = new Category;
         $category->name = $request->name;
         $category->description = $request->description;
-        return $category->save() ?
-            redirect()->route('home')
-            ->with('status', 'Category has been created successfully.') :
-            redirect()->back()->with('status', 'error saving.');
+        $category->save();
+        return redirect()->route('home')
+            ->with('success', 'Category has been created successfully.');
     }
 
     /**
@@ -78,7 +77,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
-        $data['categories'] = Category::with('templates');
+        $data['categories'] = Category::all();
         return view('category.edit', compact('category'), [...$data,]);
     }
 
@@ -92,14 +91,14 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+        $validation = $request->validate([
+            'name' => 'required|unique:category|min:2',
+            'description' => 'required|min:3',
         ]);
-        $template = Category::find($id);
-        $template->name = $request->name;
-        $template->description = $request->description;
-        $template->save();
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
         return redirect()->route('home')
             ->with('success', 'Category has been updated successfully.');
     }
@@ -115,6 +114,6 @@ class CategoryController extends Controller
         //
         $category->delete();
         return redirect()->route('home')
-            ->with('success', 'Template has been deleted successfully');
+            ->with('success', 'category has been deleted successfully');
     }
 }
