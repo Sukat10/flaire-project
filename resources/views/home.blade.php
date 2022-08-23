@@ -14,10 +14,10 @@
         @isset($categories)
             @foreach ($categories as $category)
             <section class="py-5">
-                <h2 class="uppercase font-bold text-xl pb-6">{{$category->name}}</h2>
-                <div class="flex overflow-x-hidden md:flex-wrap gap-5">
+                <h2 class="uppercase font-bold text-xl pb-6 truncate">{{$category->name}}</h2>
+                <div class="flex overflow-x-auto md:flex-wrap gap-5 pb-3">
                     @foreach ($category->templates as $template)
-                    <div class="capitalize w-40 h-40 md:w-60 md:h-60 relative">
+                    <div class="capitalize w-40 !min-w-[150px] block h-40 md:w-60 md:h-60 relative">
                         <a href="{{ route('templates.show',$template) }}" class="h-full w-full absolute top-0 left-0 rounded-lg overflow-hidden bg-app-blue bg-opacity-25">
                             <img src="{{$template->template}}" alt="" class="h-full w-full rounded-lg">
                         </a>

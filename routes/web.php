@@ -62,15 +62,11 @@ Route::middleware([Authenticate::class])->group(function () {
     // admin only
     Route::middleware(['admin'])->group(function () {
         Route::resource('templates', TemplateController::class)->only([
-            'create', 'store', 'edit',
+            'create', 'store', 'edit', 'update', 'destroy'
         ]);
-        Route::post('templates/{template}', [TemplateController::class, 'update'])->name('template.update');
-        Route::post('templates/{template}', [TemplateController::class, 'destroy'])->name('template.destroy');
         Route::resource('categories', CategoryController::class)->only([
-            'create', 'store', 'edit'
+            'create', 'store', 'edit', 'update', 'destroy'
         ]);
-        Route::post('categories/{category}', [TemplateController::class, 'update'])->name('category.update');
-        Route::post('categories/{category}', [TemplateController::class, 'destroy'])->name('category.destroy');
     });
     // end of admin only
 

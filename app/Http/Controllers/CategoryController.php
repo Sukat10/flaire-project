@@ -88,14 +88,14 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category  $category)
     {
         //
         $validation = $request->validate([
             'name' => 'required|unique:category|min:2',
             'description' => 'required|min:3',
         ]);
-        $category = Category::find($id);
+        $category = Category::find($category);
         $category->name = $request->name;
         $category->description = $request->description;
         $category->save();

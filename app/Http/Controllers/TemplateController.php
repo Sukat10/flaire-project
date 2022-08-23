@@ -74,7 +74,7 @@ class TemplateController extends Controller
     {
         //
         $data['categories'] = Category::all();
-        return view('template.show', [...$data, compact('template')]);
+        return view('template.show', compact('template'), [...$data,]);
     }
 
     /**
@@ -87,7 +87,7 @@ class TemplateController extends Controller
     {
         //
         $data['categories'] = Category::all();
-        return view('template.edit', [...$data, compact('template')]);
+        return view('template.edit', compact('template'), [...$data,]);
     }
 
     /**
@@ -97,7 +97,7 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Template $template)
     {
         //
         $validation = $request->validate([
@@ -111,13 +111,16 @@ class TemplateController extends Controller
         $slug = $request->slug;
         $title = $request->title;
         $slug = $slug ? Str::slug($slug) : Str::slug($title);
-        $template = Template::find($id);
-        $template->title = $title;
-        $template->cat_id = $request->cat_id;
-        $template->template = $request->template;
-        $template->content = $request->content;
-        $template->slug = $slug;
-        $template->save();
+        $template = Template::find($template->id);
+        $data = [
+            'title' => $title,
+            'cat_id' => $request->cat_id,
+            'template' => $request->template,
+            'content' => $request->content,
+            'slug' => $slug,
+            'link' => $request->link
+        ];
+        $template->update($data);
         return  redirect()->route('home')
             ->with('success', 'Template has been created successfully.');
     }

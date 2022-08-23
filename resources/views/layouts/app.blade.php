@@ -28,11 +28,11 @@
                     </a>
                 </div>
 
-                <form action="{{ route('search') }}" method="get" class="grow text-dark  md:mr-10 md:px-10">
+                <form action="{{ route('search') }}" method="get" class="grow text-dark container md:mr-10 md:px-10">
                     {{ csrf_field() }}
-                    <div class="flex items-center rounded-md self-center bg-white px-3 gap-3 bg-[white]">
+                    <div class="flex items-center w-full rounded-md self-center bg-white px-3 gap-3 bg-[white]">
                         <img src="{{asset('images/search.svg')}}" class="w-4 h-4"/>
-                        <input class="pr-3 h-10 outline-none border-none grow rounded-md text-[black]" type="search" name="" id=""
+                        <input class="pr-3 h-10 outline-none border-none grow max-w-full rounded-md text-[black]" type="search" name="" id=""
                             placeholder="search flaire" />
                     </div>
                 </form>
@@ -102,15 +102,13 @@
         {{-- categories nav --}}
         <nav class="bg-app-red sticky top-0 left-0 w-full z-[49] app-header">
             <div class="container capitalize relative mx-auto py-1 flex px-6 justify-between items-center text-[white] text-sm">
-                <span>categories</span>
-                <a href="{{ route('categories.index') }}" class="no-underline hover:underline text-right gap-2 min-w-[120px]">see all</a>
+                <span class="truncate">categories</span>
+                <a href="{{ route('categories.index') }}" class="no-underline hover:underline text-right gap-2 shrink">see all</a>
             </div>
 
             <div class="pt-1 px-6 text-white container mx-auto">
                 <ul
                     class="flex items-end text-sm font-semibold overflow-hidden text-[whitesmoke]">
-                    <a class="cat_item" href="{{route('categories.index')}}">All</a>
-
                     @isset($categories)
                         @foreach ($categories as $category)
                             <a class="cat_item capitalize !truncate" href="{{route('categories.show',$category)}}">{{$category->name}}</a>
