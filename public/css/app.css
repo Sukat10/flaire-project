@@ -950,6 +950,9 @@ video {
 .max-w-\[250px\] {
   max-width: 250px;
 }
+.max-w-xl {
+  max-width: 36rem;
+}
 .shrink {
   flex-shrink: 1;
 }
@@ -1550,6 +1553,10 @@ video {
     max-width: 32rem;
   }
 
+  .sm\:max-w-xl {
+    max-width: 36rem;
+  }
+
   .sm\:shrink {
     flex-shrink: 1;
   }
@@ -1854,6 +1861,12 @@ video {
 
   .lg\:m-0 {
     margin: 0;
+  }
+
+  .lg\:min-w-max-content {
+    min-width: -webkit-max-content;
+    min-width: -moz-max-content;
+    min-width: max-content;
   }
 
   .lg\:max-w-full {

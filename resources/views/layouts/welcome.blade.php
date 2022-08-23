@@ -22,7 +22,7 @@
 
 <body class="h-screen antialiased leading-none font-sans">
     <div id="app">
-        <header class="py-2 md:py-4 bg-transparent fixed top-0 right-0 left-0 z-50 header">
+        <header class="py-2 md:py-4 bg-[white] sticky top-0 right-0 left-0 z-50 header">
             <div class="w-full flex justify-end  md:justify-between items-center px-6 relative overflow-x-hidden xl:container">
                 <div class="hidden md:block w-3/12">
                     <a href="{{ route('home') }}" class="text-lg font-semibold text-gray-900 no-underline">
@@ -82,7 +82,7 @@
             </div>
         </header>
 
-        <main class="py-2 pt-15">
+        <main class="py-2 pt-15 relative">
             @yield('content')
         </main>
 
@@ -91,7 +91,6 @@
     <script>
         const navtoggler = document.querySelector("button.navToggle");
         const menu = document.querySelector("nav.navigation");
-        const header = document.querySelector("header.header")
 
         navtoggler.addEventListener("click", (e) => {
             e.preventDefault();

@@ -89,5 +89,8 @@
 
 <script>
     document.body.classList.add('bg-app-pink')
+    const header = document.querySelector("header.header")
+    header.classList.remove('bg-[white]')
+    header.classList.add('bg-app-pink')
 </script>
 @endsection
