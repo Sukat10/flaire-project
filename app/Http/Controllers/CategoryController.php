@@ -92,13 +92,15 @@ class CategoryController extends Controller
     {
         //
         $validation = $request->validate([
-            'name' => 'required|unique:category|min:2',
+            'name' => 'required|min:2',
             'description' => 'required|min:3',
         ]);
-        $category = Category::find($category);
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->save();
+        $category = Category::find($category->id);
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+        ];
+        $category->update($data);
         return redirect()->route('home')
             ->with('success', 'Category has been updated successfully.');
     }

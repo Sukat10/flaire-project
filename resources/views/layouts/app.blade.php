@@ -103,7 +103,7 @@
         <nav class="bg-app-red sticky top-0 left-0 w-full z-[49] app-header">
             <div class="container capitalize relative mx-auto py-1 flex px-6 justify-between items-center text-[white] text-sm">
                 <span class="truncate">categories</span>
-                <a href="{{ route('categories.index') }}" class="no-underline hover:underline text-right gap-2 shrink">see all</a>
+                <a href="{{ route('categories.index') }}" class="no-underline hover:underline text-right gap-2 shrink truncate">see all</a>
             </div>
 
             <div class="pt-1 px-6 text-white container mx-auto">

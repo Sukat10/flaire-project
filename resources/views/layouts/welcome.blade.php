@@ -44,10 +44,6 @@
                     <a href="{{ route('instructions') }}" class="no-underline hover:underline">
                         instructions
                     </a>
-                    {{-- <a href="{{ route('category') }}" class="no-underline hover:underline">
-                        category
-                    </a> --}}
-                    <!-- <span>{{ Auth::user()->name }}</span> -->
 
                     <a href="{{ route('logout') }}" class="no-underline hover:underline" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
