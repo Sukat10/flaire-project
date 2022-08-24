@@ -3,33 +3,41 @@
 @section('content')
 <main>
     <div class="w-full sm:px-6">
-
-        @isset($category)
-        <section class="py-5">
-            <h2 class="uppercase font-bold text-xl pb-6">{{$category->name}}</h2>
-            @foreach ($category->templates as $template)
-                {{-- action buttons --}}
-                <div class="w-full p-3 truncate break-all flex justify-end items-center gap-2">
-                    <a href="{{route('templates.show',$template)}}" class="btn p-2 bg-app-pink rounded-md font-semibold">Open</a>
-                    @if(Auth::user()->role === 'admin')
-                    <a href="{{route('templates.edit',$template)}}" class="btn p-2 bg-app-blue rounded-md text-[white] font-semibold "> Edit</a>
-                    @endif
+        @isset($user)
+        <section class="py-5 flex flex-wrap md:flex-nowrap gap-5 ">
+            <div class="flex flex-col md:w-[30%] items-center justify-end gap-3 pb-2 md:sticky top-0 self-start">
+                <div class="rounded-full h-[150px] w-[150px] bg-app-red font-black text-6xl text-[white] flex items-center justify-center">
+                    <h1>S.G</h1>
                 </div>
-
-                <div class="flex flex-wrap md:flex-nowrap border-[#ccc] border-0 border-b mb-8">
-                    <div class="grow md:w-[60%] p-3 truncate break-all flex flex-col">
-                        <div class="max-h-44 md:h-44 truncate py-3 w-full grow">{{$template->content}}</div>
-                        <button class="btn bg-app-blue rounded-2xl text-[white] font-semibold block w-full my-3"> COPY TEXT TO CLIPBOARD</button>
-                    </div>
-
-                    <div class="grow md:!shrink md:w-[40%] relative p-3">
-                        <div class="container h-44 overflow-hidden flex items-center justify-center hover:items-start hover:overflow-y-auto cursor-pointer transition-all duration-500">
-                            <img src="{{$template->template}}" alt="{{$template->title}}" class="max-w-full rounded-lg"/>
-                        </div>
-                        <a class="btn bg-app-blue rounded-2xl text-[white] block w-full my-3 font-semibold" href="{{$template->link}}"> EDIT DESIGN</a>
-                    </div>
+                <h4 class="text-base font-semibold capitalize"> {{ Auth::user()->name }} </h4>
+                <a href="{{route('users.edit',$user)}}" class="btn p-2 bg-app-blue rounded-md text-[white] font-semibold container"> Edit</a>
+            </div>
+            <div class="grow flex flex-wrap gap-5 p-5">
+                <div class="flex flex-col gap-2 w-full md:w-[45%]">
+                    <small>Name :</small>
+                    <div>{{Auth::user()->name}}</div>
                 </div>
-            @endforeach
+                <div class="flex flex-col gap-2 w-full md:w-[45%]">
+                    <small>Email :</small>
+                    <div>{{Auth::user()->email}}</div>
+                </div>
+                <div class="flex flex-col gap-2 w-full md:w-[45%]">
+                    <small>Phone :</small>
+                    <div>{{Auth::user()->phone}}</div>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <small>Role :</small>
+                    <div>{{Auth::user()->role}}</div>
+                </div>
+                <div class="flex flex-col gap-2 w-full md:w-[45%]">
+                    <small>Joined :</small>
+                    <div>{{Auth::user()->created_at}}</div>
+                </div>
+                <div class="flex flex-col gap-2 w-full md:w-[45%]">
+                    <small>Updated :</small>
+                    <div>{{Auth::user()->updated_at}}</div>
+                </div>
+            </div>
         </section>
         @endisset
     </div>

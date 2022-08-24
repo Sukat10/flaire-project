@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -31,6 +32,7 @@ class UserController extends Controller
         //
         $data['categories'] = Category::all();
         return view('user.create', $data);
+        // return redirect()->route('register');
     }
 
     /**
@@ -42,11 +44,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $data['categories'] = Category::all();
-        $data['users'] = User::all();
+        $request->validate([
+            'phone' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8|confirmed'
+        ]);
 
-        return  redirect()->route('home')
-            ->with('success', 'Template has been created successfully.');
+        User::create([
+            ...$request->all(),
+            'password' => Hash::make($request->password),
+        ]);
+        return  redirect()->back()
+            ->with('success', 'User Profile has been created successfully.');
     }
 
     /**
@@ -59,8 +68,7 @@ class UserController extends Controller
     {
         //
         $data['categories'] = Category::all();
-        $data['users'] = User::all();
-        return view('user.index', $data);
+        return view('user.show', compact('user'), $data);
     }
 
     /**
@@ -73,8 +81,7 @@ class UserController extends Controller
     {
         //
         $data['categories'] = Category::all();
-        $data['users'] = User::all();
-        return view('user.edit', $data);
+        return view('user.edit', compact('user'), $data);
     }
 
     /**
@@ -87,10 +94,14 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
-        $data['categories'] = Category::all();
-        $data['users'] = User::all();
-        return  redirect()->route('home')
-            ->with('success', 'Template has been created successfully.');
+        $request->validate([
+            'name' => 'required|min:3',
+            'phone' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        ]);
+        $user->update($request->all());
+        return  redirect()->route('users.show', $user)
+            ->with('success', 'User Profile has been created successfully.');
     }
 
     /**
@@ -103,7 +114,7 @@ class UserController extends Controller
     {
         //
         $user->delete();
-        return redirect()->route('home')
-            ->with('success', 'Template has been deleted successfully');
+        return redirect()->back()
+            ->with('success', 'User Profile has been deleted successfully');
     }
 }

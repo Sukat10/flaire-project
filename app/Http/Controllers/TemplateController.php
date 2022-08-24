@@ -44,7 +44,7 @@ class TemplateController extends Controller
     {
         //
         $validation = $request->validate([
-            'title' => 'required|min:3',
+            'title' => 'required|string|max:255|min:3',
             'cat_id' => 'required|numeric',
             'content' => 'required|min:3',
             'template' => 'required|url',
@@ -101,12 +101,13 @@ class TemplateController extends Controller
     public function update(Request $request, Template $template)
     {
         //
-        $validation = $request->validate([
-            'title' => 'required|min:3',
+        $request->validate([
+            'title' => 'required|string|max:255|min:3',
             'cat_id' => 'required|numeric',
             'content' => 'required|min:3',
             'template' => 'required|url',
-            'link' => 'required|url'
+            'link' => 'required|url',
+            'slug' => 'required|string|max:255|min:3|unique:template,slug,' . $template->id
         ]);
         // Str::slug('Laravel 5 Framework', '-')
         $slug = $request->slug;

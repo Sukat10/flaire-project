@@ -92,8 +92,8 @@ class CategoryController extends Controller
     {
         //
         $validation = $request->validate([
-            'name' => 'required|min:2',
-            'description' => 'required|min:3',
+            'name' => 'required|string|max:255|min:2',
+            'description' => 'required|string|min:3',
         ]);
         $data = [
             'name' => $request->name,

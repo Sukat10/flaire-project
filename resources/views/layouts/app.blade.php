@@ -135,8 +135,13 @@
                     <a href="{{ route('categories.create') }}" class="no-underline hover:underline flex items-center gap-2 min-w-[120px]">
                         <img src="{{asset('images/category.svg')}}" class="w-7 h-7"/> <span>category</span>
                     </a>
+
                     <a href="{{ route('templates.create') }}" class="no-underline hover:underline flex items-center gap-2 min-w-[120px]">
                         <img src="{{asset('images/template.svg')}}" class="w-7 h-7"/> <span>template</span>
+                    </a>
+
+                    <a href="{{ route('users.create') }}" class="no-underline hover:underline flex items-center gap-2 min-w-[120px]">
+                        <img src="{{asset('images/add-user.svg')}}" class="w-7 h-7"/> <span>user</span>
                     </a>
                 </div>
                 <div class="flex justify-end">

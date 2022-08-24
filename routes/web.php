@@ -69,7 +69,7 @@ Route::middleware([Authenticate::class])->group(function () {
             'create', 'store', 'edit', 'update', 'destroy'
         ]);
         Route::resource('users', UserController::class)->only([
-            'create', 'store', 'index'
+            'create', 'index'
         ]);
     });
     // end of admin only
