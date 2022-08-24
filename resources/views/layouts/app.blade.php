@@ -40,12 +40,19 @@
                 <nav
                     class="shrink navigation text-gray-900 text-sm sm:text-base w-fit max-w-[75vw] w-full md:w-3/12 flex flex-col gap-4 capitalize transition-all duration-700 justify-start -top-4 right-0 shadow-lg h-0 absolute z-50 bg-[white] overflow-y-auto ">
                         <button class="p-2 navToggle right-3 rounded-full btn absolute top-5 " onclick="toggleNav()"> <img src="{{asset('images/close.svg')}}" class="w-5 h-5"/></button>
-                    <a class="flex flex-col items-center justify-end gap-3 pb-2 border-[#ccc] border-b sticky top-0" href="{{route('users.show', Auth::user())}}">
+                    <a class="flex flex-col items-center justify-end gap-3 pb-2 border-[#ccc] border-b bg-[white]" href="{{route('users.show', Auth::user())}}">
                         <div class="rounded-full h-[150px] w-[150px] bg-app-red font-black text-6xl text-[white] flex items-center justify-center">
                             <h1>S.G</h1>
                         </div>
                         <small class="text-base lowercase"> {{ Auth::user()->email }} </small>
                     </a>
+                    
+                    @if(Auth::user()->role === 'admin')
+                    <a href="{{ route('users.index') }}" class="no-underline hover:underline">
+                        manage users
+                    </a>
+                    @endif
+
                     <a href="{{ route('instructions') }}" class="no-underline hover:underline">
                         instructions
                     </a>
