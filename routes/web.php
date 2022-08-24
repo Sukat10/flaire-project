@@ -6,6 +6,7 @@ use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/contact-us', function () {
 Route::get('/instructions', function () {
     return view('comingsoon');
 })->name('instructions');
+
+Route::redirect('/designs', '/templates');
 
 Route::get('/designs', function () {
     return view('comingsoon');
@@ -54,8 +57,6 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Auth::routes();
 
-Route::redirect('/designs', '/templates');
-
 Route::middleware([Authenticate::class])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -67,6 +68,9 @@ Route::middleware([Authenticate::class])->group(function () {
         Route::resource('categories', CategoryController::class)->only([
             'create', 'store', 'edit', 'update', 'destroy'
         ]);
+        Route::resource('users', UserController::class)->only([
+            'create', 'store', 'index'
+        ]);
     });
     // end of admin only
 
@@ -76,4 +80,12 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::resource('categories', CategoryController::class)->only([
         'index', 'show'
     ]);
+
+    // user specific
+    Route::middleware(['owner'])->group(function () {
+        Route::resource('users', UserController::class)->only([
+            'show', 'update', 'destroy', 'edit',
+        ]);
+    });
+    // end of user specific
 });

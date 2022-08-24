@@ -95,7 +95,6 @@ class CategoryController extends Controller
             'name' => 'required|min:2',
             'description' => 'required|min:3',
         ]);
-        $category = Category::find($category->id);
         $data = [
             'name' => $request->name,
             'description' => $request->description,

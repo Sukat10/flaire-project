@@ -17,8 +17,9 @@ class TemplateController extends Controller
     public function index()
     {
         //
-        $data['templates'] = Template::all();
-        return view('home', $data);
+        $data['categories'] = Category::all();
+        $data['templates'] = Template::with('category')->get();
+        return view('template.index', $data);
     }
 
     /**
@@ -111,7 +112,6 @@ class TemplateController extends Controller
         $slug = $request->slug;
         $title = $request->title;
         $slug = $slug ? Str::slug($slug) : Str::slug($title);
-        $template = Template::find($template->id);
         $data = [
             'title' => $title,
             'cat_id' => $request->cat_id,

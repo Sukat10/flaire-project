@@ -40,12 +40,12 @@
                 <nav
                     class="shrink navigation text-gray-900 text-sm sm:text-base w-fit max-w-[75vw] w-full md:w-3/12 flex flex-col gap-4 capitalize transition-all duration-700 justify-start -top-4 right-0 shadow-lg h-0 absolute z-50 bg-[white] overflow-y-auto ">
                         <button class="p-2 navToggle right-3 rounded-full btn absolute top-5 " onclick="toggleNav()"> <img src="{{asset('images/close.svg')}}" class="w-5 h-5"/></button>
-                    <div class="flex flex-col items-center justify-end gap-3 pb-2 border-[#ccc] border-b sticky top-0">
+                    <a class="flex flex-col items-center justify-end gap-3 pb-2 border-[#ccc] border-b sticky top-0" href="{{route('users.show', Auth::user())}}">
                         <div class="rounded-full h-[150px] w-[150px] bg-app-red font-black text-6xl text-[white] flex items-center justify-center">
                             <h1>S.G</h1>
                         </div>
                         <small class="text-base lowercase"> {{ Auth::user()->email }} </small>
-                    </div>
+                    </a>
                     <a href="{{ route('instructions') }}" class="no-underline hover:underline">
                         instructions
                     </a>
@@ -126,7 +126,7 @@
         </main>
 
         {{-- footer --}}
-        <footer class="py-2 md:py-0 bg-white fixed w-full left-0 right-0 bottom-0 container mx-auto  max-w-screen-xl flex flex-col justify-end items-end border-[#dddddd] border-0 border-t bg-[white]">
+        <footer class="py-2 md:py-0 bg-white fixed w-full left-0 right-0 bottom-0 container mx-auto  max-w-screen-2xl flex flex-col justify-end items-end border-[#dddddd] border-0 border-t bg-[white]">
 
             <div class="absolute bottom-16 right-2">
                 {{-- add button --}}

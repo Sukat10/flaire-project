@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,9 @@ class UserController extends Controller
     public function index()
     {
         //
-
+        $data['categories'] = Category::all();
+        $data['users'] = User::all();
+        return view('user.index', $data);
     }
 
     /**
@@ -26,6 +29,8 @@ class UserController extends Controller
     public function create()
     {
         //
+        $data['categories'] = Category::all();
+        return view('user.create', $data);
     }
 
     /**
@@ -37,6 +42,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $data['categories'] = Category::all();
+        $data['users'] = User::all();
+
+        return  redirect()->route('home')
+            ->with('success', 'Template has been created successfully.');
     }
 
     /**
@@ -48,6 +58,9 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
+        $data['categories'] = Category::all();
+        $data['users'] = User::all();
+        return view('user.index', $data);
     }
 
     /**
@@ -59,6 +72,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+        $data['categories'] = Category::all();
+        $data['users'] = User::all();
+        return view('user.edit', $data);
     }
 
     /**
@@ -71,6 +87,10 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
+        $data['categories'] = Category::all();
+        $data['users'] = User::all();
+        return  redirect()->route('home')
+            ->with('success', 'Template has been created successfully.');
     }
 
     /**
@@ -82,5 +102,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $user->delete();
+        return redirect()->route('home')
+            ->with('success', 'Template has been deleted successfully');
     }
 }
