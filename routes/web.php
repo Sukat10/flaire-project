@@ -33,6 +33,10 @@ Route::get('/instructions', function () {
 
 Route::redirect('/designs', '/templates');
 
+Route::get('/designs', function () {
+    return view('comingsoon');
+})->name('designs');
+
 Route::get('/social-calender', function () {
     return view('comingsoon');
 })->name('social-calender');
