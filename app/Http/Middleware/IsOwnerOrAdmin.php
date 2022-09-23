@@ -17,7 +17,10 @@ class IsOwnerOrAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() &&  (Auth::user()->role === "admin" || Auth::user()->id === $request->user_id)) {
+        if (
+            Auth::user() &&  (Auth::user()->id === $request->user_id || Auth::user()->id === $request->user->id ||
+                Auth::user()->role === "admin")
+        ) {
             return $next($request);
         }
 

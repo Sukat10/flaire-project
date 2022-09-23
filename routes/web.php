@@ -74,13 +74,6 @@ Route::middleware([Authenticate::class])->group(function () {
     });
     // end of admin only
 
-    Route::resource('templates', TemplateController::class)->only([
-        'index', 'show'
-    ]);
-    Route::resource('categories', CategoryController::class)->only([
-        'index', 'show'
-    ]);
-
     // user specific
     Route::middleware(['owner'])->group(function () {
         Route::resource('users', UserController::class)->only([
@@ -88,4 +81,11 @@ Route::middleware([Authenticate::class])->group(function () {
         ]);
     });
     // end of user specific
+
+    Route::resource('templates', TemplateController::class)->only([
+        'index', 'show'
+    ]);
+    Route::resource('categories', CategoryController::class)->only([
+        'index', 'show'
+    ]);
 });
