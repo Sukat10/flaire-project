@@ -232,4 +232,8 @@ return [
 
     ],
 
+    'paystack' => env('PAYSTACK_KEY'),
+    'flutterwave' => env('FLUTTERWAVE_KEY'),
+    'canva' => env('CANVA_KEY'),
+
 ];
